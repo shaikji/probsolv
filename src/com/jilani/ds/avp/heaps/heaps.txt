@@ -1,0 +1,12 @@
+Heaps Playlist by Aditya Verma
+==============================
+
+1. Kth smallest/largest element
+2. Return K smallest/largest elements
+3. Sort a K sorted Array/ Sort a nearly sorted array
+4. K Closest Numbers
+5. Top-K frequent numbers
+6. Frequency sort
+7. K-closest points to origin
+8. Connect Ropes to minimize cost
+9. Sum of elements between k1 smallest and k2 smallest numbers
