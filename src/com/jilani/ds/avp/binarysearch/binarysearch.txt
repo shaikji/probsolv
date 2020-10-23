@@ -1,0 +1,38 @@
+Binary Search Playlist by Aditya Verma
+======================================
+1. Binary Search
+2. Binary Search on Reverse Sorted Array
+3. Binary Search on Order Unknown Sorted Array
+4. First and Last occurance of an element in a sorted array
+5. Count of an element in a sorted array
+6. Number of times a sorted array is rotated
+7. Find an element in a sorted and rotated array
+8. Search in a nearly sorted array
+9. Find floor of an element in a sorted array
+10. Find Ceil of an element in a sorted array
+11. Next alphabetical element in a sorted array
+12. Find position of an element in an infinite sorted array
+13. Index of first 1 in a binary sorted Infinite sorted array
+14. Min Diff element in a Sorted Array
+15. Binary Search on Answer Concept *********** Most Important
+16. Find Peak Element
+17. Find Max element in Bitonic Array
+18. Search an element in Bitonic Array
+19. Search in Row-wise and Column-wise Sorted Array
+20. Allocate Minimum number of Pages ************* Most Important
+
+
+Binary search on Answer concept:
+================================
+1. Book Allocation Problem (GFG) - ( Same as 20 above )
+2. Aggressive cow (spoj)
+3. Prata and roti (spoj)
+4. EKO (spoj)
+5. Google kickstart A Q-3 2020
+6. (Leetcode #1482) Minimum Number of Days to Make m Bouquets
+7. (Leetcode #1283) Find the Smallest Divisor Given a Threshold
+8. (Leetcode #1231) Divide Chocolate
+9. (Leetcode #1011) Capacity To Ship Packages In N Days
+10.(Leetcode #875) Koko Eating Bananas
+11.(Leetcode #774) Minimize Max Distance to Gas Station
+12. (Leetcode #410) Split Array Largest Sum
