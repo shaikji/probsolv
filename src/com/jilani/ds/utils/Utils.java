@@ -7,5 +7,11 @@ public class Utils {
 			System.out.print(" " + i);
 		System.out.println();
 	}
+	
+	public static void printArray(char[] arr) {
+		for ( char i: arr)
+			System.out.print(" " + i);
+		System.out.println();
+	}
 
 }
