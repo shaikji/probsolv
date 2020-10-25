@@ -51,11 +51,11 @@ public class AllocatePagesOfBook {
 		int currSum = 0;
 
 		for (int i = 0; i < arr.length; i++) {
-			if (currSum + arr[i] <= sum) {
-				currSum += arr[i];
-			} else {
+			if (currSum + arr[i] > sum) {
 				n++;
 				currSum = arr[i];
+			} else {
+				currSum += arr[i];
 			}
 		}
 
