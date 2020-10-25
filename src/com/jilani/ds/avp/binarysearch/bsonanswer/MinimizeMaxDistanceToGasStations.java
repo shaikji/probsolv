@@ -7,7 +7,7 @@ public class MinimizeMaxDistanceToGasStations {
 		int[] stations = { 1,2,3,4,5,6,7,8,8,9};
 		MinimizeMaxDistanceToGasStations app = new MinimizeMaxDistanceToGasStations();
 		double maxDist = app.minmaxGasDist(stations, 9);
-
+		System.out.println(" maxDist = " + maxDist);
 	}
 	
 	 public double minmaxGasDist(int[] stations, int K) {
@@ -16,23 +16,22 @@ public class MinimizeMaxDistanceToGasStations {
 	            return -1;
 	        
 	        int min = 0;
+	        // or int max = 1e8
 	        int max = stations[stations.length-1] - stations[0];
 	        double l = min;
 	        double r = max;
-	        double best = 0.0;
-	        while ( l < r ){
+	        while ( r - l > 1e-6  ){
 	            
 	            double mid = l + (r-l)/2.0;
 	            
 	            if (isPossible(stations, mid, K)){
-	                best = mid;
 	                r = mid;
 	            } else {
 	                l = mid;
 	            }
 	        }
 	        
-	        return best;
+	        return l;
 	        
 	    }
 	    
@@ -41,7 +40,7 @@ public class MinimizeMaxDistanceToGasStations {
 	        int num_needed=0;
 	        
 	        for ( int i=1; i < stations.length-1; i++){
-	            num_needed += Math.floor((stations[i] - stations[i-1])/dist);
+	            num_needed += (int)((stations[i] - stations[i-1])/dist);
 	        }
 	        
 	        return num_needed <= K;
