@@ -27,6 +27,7 @@ public class LongestSubstringWithSameLettersAfterReplacement {
 			char right = str.charAt(windowEnd);
 			map.put(right, map.getOrDefault(right, 0) + 1);
 			
+			
 			maxfreq = Math.max(maxfreq, map.get(right));
 			
 			if ( (windowEnd - windowStart + 1 - maxfreq) > K) {
