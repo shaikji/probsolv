@@ -63,3 +63,26 @@ public class StringPatternPermutationMatching {
 		return false;
 	}
 }
+
+
+/*
+
+1. Prepare a pattern Map
+2. For every character in 'text'
+	a. If character is found in map
+		reduce the count in pattern map
+		increment the matched if count == 0;
+		else don't increment matched.
+		
+	b. If All characters are matched ( matched == pattern.length )
+		return true; // or capture the index
+		
+	c. if window size == pattern.length
+		if the 'left' character is found in pattern
+			if the count of left char == 0 
+			then increment matched--; // reset matching.
+			increment its count in pattern map
+		start++;
+
+
+*/
