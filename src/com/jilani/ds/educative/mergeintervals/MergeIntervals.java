@@ -4,9 +4,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.jilani.ds.educative.mergeintervals.InsertInterval.Interval;
+
 public class MergeIntervals {
 
 	public static void main(String[] args) {
+		
+		List<Interval> intervals1 = new ArrayList();
+		intervals1.add(new Interval(1,3));
+		intervals1.add(new Interval(4,6));
+		intervals1.add(new Interval(5,7));
+		intervals1.add(new Interval(8,12));
+		System.out.println(" Original intervals");
+		System.out.println(intervals1);
+		System.out.println();
+		System.out.println(" Merged intervals");
+		System.out.println(merge(intervals1));
 
 		List<Interval> intervals = new ArrayList();
 		intervals.add(new Interval(1,4));
@@ -57,15 +70,13 @@ public class MergeIntervals {
 		mergedList.add(new Interval(start, end));
 
 		for ( int i=1; i < intervals.size(); i++) {
+			last = mergedList.get(mergedList.size()-1);
 			Interval current = intervals.get(i);
 			// If there is NO overlap, add it to the list
-			if ( end <= current.start) {
-				start = current.start;
-				end = current.end;
-				mergedList.add(new Interval(start, end));
+			if ( last.end <= current.start) {
+				mergedList.add(new Interval(current.start, current.end));
 			} else {
-				// found overlap
-				end = Math.max(end, current.end);
+				last.end = Math.max(end, current.end);
 			}			
 		}
 		
