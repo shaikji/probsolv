@@ -1,10 +1,9 @@
 package com.jilani.ds.educative.mergeintervals;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import com.jilani.ds.educative.mergeintervals.MergeIntervals.Interval;
 
 public class InsertInterval {
 
@@ -18,7 +17,7 @@ public class InsertInterval {
 		System.out.println(intervals);
 		System.out.println();
 		System.out.println(" Merged intervals");
-		System.out.println(insertInterval(intervals, new Interval(4, 6)));
+		System.out.println(insertIntervalOptimized(intervals, new Interval(4, 6)));
 
 		System.out.println("---------------------");
 		List<Interval> intervals2 = new ArrayList();
@@ -29,7 +28,7 @@ public class InsertInterval {
 		System.out.println(intervals2);
 		System.out.println();
 		System.out.println(" Merged intervals");
-		System.out.println(insertInterval(intervals, new Interval(4, 10)));
+		System.out.println(insertIntervalOptimized(intervals, new Interval(4, 10)));
 
 		System.out.println("---------------------");
 		List<Interval> intervals3 = new ArrayList();
@@ -39,17 +38,55 @@ public class InsertInterval {
 		System.out.println(intervals3);
 		System.out.println();
 		System.out.println(" Merged intervals");
-		System.out.println(insertInterval(intervals3, new Interval(1, 4)));
+		System.out.println(insertIntervalOptimized(intervals3, new Interval(1, 4)));
+
+	}
+
+	// insert interval optimized. If the given intervals are already sorted, then we
+	// can optimize
+	static List<Interval> insertIntervalOptimized(List<Interval> intervals, Interval newInterval) {
+
+		if (intervals == null)
+			return Arrays.asList(newInterval);
+		System.out.println(" New interval added = " + newInterval);
+		int i = 0;
+		Interval interval;
+		List<Interval> result = new ArrayList();
+
+		// Add all the non overlapping intervals before the new Interval
+		while (i < intervals.size() && intervals.get(i).end <= newInterval.start) {
+			result.add(new Interval(intervals.get(i).start, intervals.get(i).end));
+			i++;
+		}
+
+		// Process the overlapping intervals
+		int m_start =newInterval.start;
+		int m_end = newInterval.end;
+		
+		while ( i < intervals.size() && intervals.get(i).start <= newInterval.end  ) {
+			m_start = Math.min(m_start, intervals.get(i).start);
+			m_end = Math.max(m_end, intervals.get(i).end);
+			i++;
+		}
+	
+		// Add the merged inteval
+		result.add(new Interval(m_start, m_end));
+		
+		// Add the remaining non-overlapping intervals
+		while (i < intervals.size()) {
+			result.add(new Interval(intervals.get(i).start, intervals.get(i).end));
+			i++;
+		}
+
+		return result;
 
 	}
 
 	static List<Interval> insertInterval(List<Interval> intervals, Interval newInterval) {
 
-		if (intervals == null) {
-			List<Interval> tmpList = new ArrayList();
-			tmpList.add(newInterval);
-			return tmpList;
-		}
+		if (intervals == null)
+			return Arrays.asList(newInterval);
+
 		intervals.add(newInterval);
 		System.out.println(" New interval added = " + newInterval);
 		return merge(intervals);
