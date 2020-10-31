@@ -139,10 +139,18 @@ public class EmployeeFreeTime {
 
 		List<Interval> freeTime = new ArrayList();
 
+		int end = merged.get(0).end;
+		Interval current = null;
+
 		for (int i = 1; i < merged.size(); i++) {
+			current = merged.get(i);
 			// If No Overlap, capture the free time.
-			if (merged.get(i - 1).end < merged.get(i).start) {
-				freeTime.add(new Interval(merged.get(i - 1).end, merged.get(i).start));
+			if (end < current.start) {
+				freeTime.add(new Interval(end, current.start));
+				end = current.end;
+			} else {
+				// Overlap
+				end = Math.max(end, current.end);
 			}
 		}
 		return freeTime;

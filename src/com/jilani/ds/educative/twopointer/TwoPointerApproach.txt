@@ -1,0 +1,15 @@
+2-Pointer Approach Problems:
+============================
+
+1. Pair with Target sum
+2. Remove Duplicates
+3. Squaring a sorted array
+4. Triplet sum to Zero
+5. Triplet sum close to target
+6. Triplets with smaller sum
+7. Sub arrays with Product less than a target.
+8. Dutch National Flag problem
+9. Quadraple sum to target
+10. Compairing strings containing backspaces
+11. Minimum Window Sort
+
