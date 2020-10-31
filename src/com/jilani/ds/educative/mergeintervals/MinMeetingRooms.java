@@ -40,32 +40,34 @@ public class MinMeetingRooms {
 	
 	static int minRoomsV2(int[][] intervals) {
 		
-		int[] start = new int[intervals.length];
-		int[] end = new int[intervals.length];
+		int[] arrivals = new int[intervals.length];
+		int[] departures = new int[intervals.length];
 		
 		for ( int i=0; i < intervals.length; i++) {
-			start[i] = intervals[i][0];
-			end[i] = intervals[i][1];
+			arrivals[i] = intervals[i][0];
+			departures[i] = intervals[i][1];
 		}
 		
-		Arrays.sort(start);
-		Arrays.sort(end);
+		Arrays.sort(arrivals);
+		Arrays.sort(departures);
 		
-		int needed = 0;
-		
+		int cnt = 0;
+		int minRooms = 0;
 		int i =0;
 		int j = 0;
 		
-		while ( i < start.length) {
+		while ( i < arrivals.length && j < departures.length)  {
 			// Overlap
-			if ( start[i] < end[j]) {
-				needed++;
+			if ( arrivals[i] <= departures[j]) {
+				i++;
+				cnt++;
 			} else {
+				cnt--;
 				j++;
 			}
-			i++;
+			minRooms = Math.max(minRooms, cnt);
 		}
-		return needed;
+		return minRooms;
 	}
 
 }
