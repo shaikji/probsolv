@@ -3,12 +3,22 @@ Intervals Related Problems
 1. Merge Intervals
 
 2. Insert Interval
+	a. If input array is not sorted, then we need to sort O(NLogN) time 
+	b. If input array is already sorted, we can optimize to O(N).
 
 3. Intersection of Intervals
+	
+	
+4. Conflicting Appointments 
 
-4. Conflicting Appointments
+	a. [Follow up] Given a list of appointments, find all the conflicting appointments.
 
-
+		Appointments: [[4,5], [2,3], [3,6], [5,7], [7,8]]
+		Output: 
+		[4,5] and [3,6] conflict. 
+		[3,6] and [5,7] conflict.
+		
+		
 5. Minimum Meeting Rooms (hard) #
 	Given a list of intervals representing the start and end time of ‘N’ meetings, find the minimum number of rooms required to hold all the meetings.
 	
