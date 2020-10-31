@@ -2,7 +2,11 @@
 ============================
 
 1. Pair with Target sum
-2. Remove Duplicates
+2. Remove Duplicates	
+	a. Given an unsorted array of numbers and a target ‘key’, 
+	   remove all instances of ‘key’ in-place and return the 
+	   new length of the array.
+	   
 3. Squaring a sorted array
 4. Triplet sum to Zero
 5. Triplet sum close to target
