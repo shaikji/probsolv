@@ -1,17 +1,18 @@
 package com.jilani.ds.educative.mergeintervals;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.PriorityQueue;
 
 public class MaxCPULoad {
 
 	public static void main(String[] args) {
 
-		Job[] intervals = new Job[]{ new Job(1,4,3), new Job(2,5,4), new Job(7,9,6) };
+		Job[] intervals = new Job[] { new Job(1, 4, 3), new Job(2, 5, 4), new Job(7, 9, 6) };
 
 		System.out.println(" Max CPU Load = " + maxCPULoad(intervals));
-		//System.out.println(" Min rooms needed = " + minRoomsV2(intervals));
-
+		
+		System.out.println(" Min rooms needed = " + findMaxCPULoad(Arrays.asList(intervals)));
 
 	}
 
@@ -27,7 +28,7 @@ public class MaxCPULoad {
 		minHeap.add(intervals[0]);
 		int currentLoad = intervals[0].cpuload;
 		int maxLoad = currentLoad;
-		
+
 		for (int i = 1; i < intervals.length; i++) {
 			// If they don't overlap, remove jobs from heap. reduce current load.
 			while (!minHeap.isEmpty() && minHeap.peek().end <= intervals[i].start) {
@@ -42,44 +43,39 @@ public class MaxCPULoad {
 		return maxLoad;
 	}
 
-	static int minRoomsV2(int[][] intervals) {
+	public static int findMaxCPULoad(List<Job> jobs) {
 
-		int[] start = new int[intervals.length];
-		int[] end = new int[intervals.length];
+		if (jobs == null || jobs.size() == 0)
+			return -1;
 
-		for (int i = 0; i < intervals.length; i++) {
-			start[i] = intervals[i][0];
-			end[i] = intervals[i][1];
-		}
+		int currLoad = jobs.get(0).cpuload;
+		int end = jobs.get(0).end;
+		int maxLoad = currLoad;
+		Job currJob = null;
 
-		Arrays.sort(start);
-		Arrays.sort(end);
-
-		int needed = 0;
-
-		int i = 0;
-		int j = 0;
-
-		while (i < start.length) {
-			// Overlap
-			if (start[i] < end[j]) {
-				needed++;
+		for (int i = 1; i < jobs.size(); i++) {
+			currJob = jobs.get(i);
+			// Overlapping
+			if (end > currJob.start) {
+				currLoad += currJob.cpuload;
+				end = Math.max(end, currJob.end);
 			} else {
-				j++;
+				currLoad = currJob.cpuload;
+				end = currJob.end;
 			}
-			i++;
+			maxLoad = Math.max(maxLoad, currLoad);
 		}
-		return needed;
+		return maxLoad;
 	}
-	
-	static class Job{
-		
+
+	static class Job {
+
 		int start;
 		int end;
 		int cpuload;
-		
-		Job(int s, int e, int load){
-			start =s;
+
+		Job(int s, int e, int load) {
+			start = s;
 			end = e;
 			cpuload = load;
 		}
